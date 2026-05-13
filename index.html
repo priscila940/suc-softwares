@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUC SOFTWARES | PREMIMUM</title>
+    <style>
+        :root { --neon: #00f3ff; --bg: #050505; --glass: rgba(255, 255, 255, 0.03); }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .panel { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(0, 243, 255, 0.2); border-radius: 20px; padding: 25px; width: 100%; max-width: 380px; box-shadow: 0 0 30px rgba(0, 243, 255, 0.1); }
+        h1 { color: var(--neon); letter-spacing: 4px; text-shadow: 0 0 15px var(--neon); text-align: center; font-size: 1.4rem; }
+        .section-title { font-size: 0.8rem; color: #666; margin-top: 20px; text-transform: uppercase; border-bottom: 1px solid #222; }
+        .row { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
+        .switch { position: relative; width: 45px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #222; transition: .4s; border-radius: 34px; border: 1px solid var(--neon); }
+        input:checked + .slider { background: var(--neon); box-shadow: 0 0 15px var(--neon); }
+        .btn-panic { background: #ff0044; border: none; color: white; padding: 10px; border-radius: 10px; width: 100%; margin-top: 20px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>SUC SOFTWARES</h1>
+        
+        <div class="section-title">🎯 Combat & Aim</div>
+        <div class="row"><span>Auto-Scan Aimbot</span><label class="switch"><input type="checkbox" onchange="send('aim', this.checked)"><span class="slider"></span></label></div>
+        <div class="row"><span>No Recoil Visual</span><label class="switch"><input type="checkbox" onchange="send('recoil', this.checked)"><span class="slider"></span></label></div>
+        
+        <div class="section-title">👁️ Visual ESP</div>
+        <div class="row"><span>Skeleton Line</span><label class="switch"><input type="checkbox" onchange="send('esp', this.checked)"><span class="slider"></span></label></div>
+        <div class="row"><span>Stream Mode</span><label class="switch"><input type="checkbox" onchange="send('stream', this.checked)"><span class="slider"></span></label></div>
+
+        <button class="btn-panic" onclick="send('panic', true)">FORCE BYPASS & DISCONNECT</button>
+    </div>
+
+    <script>
+        const FIREBASE_URL = "SUA_URL_DO_FIREBASE_AQUI"; // Coloque seu link aqui
+
+        function send(func, val) {
+            const status = val ? 1 : 0;
+            fetch(`${FIREBASE_URL}/${func}.json`, {
+                method: 'PUT',
+                body: JSON.stringify(status)
+            });
+        }
+    </script>
+</body>
+</html>
