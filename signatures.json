@@ -1,0 +1,22 @@
+{
+  "COMBAT": {
+    "AIM_ASSIST": {"sig": "4F F4 7A 70 01 EE 23 0F", "patch": "00 00 A0 E3 1E FF 2F E1"},
+    "SMART_FOV": {"sig": "00 30 A0 E3 1E FF 2F E1", "patch": "00 00 C8 42"},
+    "NO_RECOIL": {"sig": "2D E9 F0 4F A3 B0 82 46", "patch": "00 20 70 47"},
+    "NO_SPREAD": {"sig": "01 EE 23 0F 1E FF 2F E1", "patch": "00 00 00 00"}
+  },
+  "VISUAL_ESP": {
+    "ESP_BOX": {"sig": "A1 B2 C3 D4 E5 F6", "patch": "01 00 00 00"},
+    "ESP_SKELETON": {"sig": "F1 E2 D3 C4 B5 A6", "patch": "01 00 00 00"},
+    "GLOW_ENEMIES": {"sig": "AA BB CC DD EE FF", "patch": "FF 00 00 FF"}
+  },
+  "PLAYER": {
+    "SPEED_SLIDER": {"sig": "00 00 80 3F", "patch": "00 00 40 40"},
+    "HIGH_JUMP": {"sig": "66 77 88 99 AA BB", "patch": "00 00 A0 40"},
+    "GHOST_WALK": {"sig": "11 22 33 44 55 66", "patch": "01 01 01 01"}
+  },
+  "WEAPON": {
+    "QUICK_RELOAD": {"sig": "99 88 77 66 55 44", "patch": "00 00 00 00"},
+    "FAST_SWITCH": {"sig": "55 44 33 22 11 00", "patch": "01 00 00 00"}
+  }
+}
