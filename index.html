@@ -3,45 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUC SOFTWARES | PREMIMUM</title>
+    <title>SUC SOFTWARES | PREMIUM PANEL</title>
     <style>
-        :root { --neon: #00f3ff; --bg: #050505; --glass: rgba(255, 255, 255, 0.03); }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .panel { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid rgba(0, 243, 255, 0.2); border-radius: 20px; padding: 25px; width: 100%; max-width: 380px; box-shadow: 0 0 30px rgba(0, 243, 255, 0.1); }
-        h1 { color: var(--neon); letter-spacing: 4px; text-shadow: 0 0 15px var(--neon); text-align: center; font-size: 1.4rem; }
-        .section-title { font-size: 0.8rem; color: #666; margin-top: 20px; text-transform: uppercase; border-bottom: 1px solid #222; }
-        .row { display: flex; justify-content: space-between; align-items: center; margin: 15px 0; }
-        .switch { position: relative; width: 45px; height: 22px; }
+        /* Estilo Geral Neon & Glass */
+        :root { --neon: #00f3ff; --bg: #050505; --glass: rgba(255, 255, 255, 0.05); --red: #ff0044; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; flex-direction: column; align-items: center; }
+
+        /* Container Principal */
+        .panel { 
+            background: var(--glass); 
+            backdrop-filter: blur(25px); 
+            border: 1px solid rgba(0, 243, 255, 0.15); 
+            border-radius: 20px; 
+            width: 95%; 
+            max-width: 420px; 
+            margin-top: 20px;
+            overflow: hidden; 
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+
+        /* Cabeçalho */
+        .header { padding: 25px; text-align: center; border-bottom: 1px solid rgba(0, 243, 255, 0.2); background: rgba(0,0,0,0.2); }
+        .header h1 { margin: 0; color: var(--neon); letter-spacing: 5px; text-shadow: 0 0 20px var(--neon); font-size: 1.6rem; font-weight: 800; }
+
+        /* Menu de Abas */
+        .tabs-menu { display: flex; background: rgba(0,0,0,0.4); overflow-x: auto; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .tab-link { 
+            padding: 15px 20px; border: none; background: none; color: #555; 
+            cursor: pointer; font-size: 0.75rem; font-weight: bold; transition: 0.3s; white-space: nowrap; 
+        }
+        .tab-link.active { color: var(--neon); border-bottom: 3px solid var(--neon); background: rgba(0, 243, 255, 0.05); }
+
+        /* Conteúdo das Funções */
+        .tab-content { padding: 20px; display: none; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Linha de Função */
+        .function-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 12px; padding: 12px; background: rgba(255,255,255,0.03); 
+            border-radius: 12px; border: 1px solid rgba(255,255,255,0.02);
+        }
+        .function-row span { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
+
+        /* Switch Neon */
+        .switch { position: relative; width: 44px; height: 22px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #222; transition: .4s; border-radius: 34px; border: 1px solid var(--neon); }
-        input:checked + .slider { background: var(--neon); box-shadow: 0 0 15px var(--neon); }
-        .btn-panic { background: #ff0044; border: none; color: white; padding: 10px; border-radius: 10px; width: 100%; margin-top: 20px; font-weight: bold; cursor: pointer; }
+        .slider { 
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; 
+            background: #1a1a1a; transition: .4s; border-radius: 20px; border: 1px solid #333; 
+        }
+        input:checked + .slider { background: var(--neon); border-color: var(--neon); box-shadow: 0 0 15px var(--neon); }
+        .slider:before { 
+            position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; 
+            background: white; transition: .4s; border-radius: 50%; 
+        }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        /* Sliders de Valor */
+        .slider-group { margin: 15px 0; }
+        .slider-group label { display: flex; justify-content: space-between; font-size: 0.75rem; margin-bottom: 8px; color: #aaa; }
+        input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: #222; border-radius: 5px; accent-color: var(--neon); }
+
+        /* Botão de Pânico */
+        .panic-btn { 
+            background: var(--red); color: white; border: none; width: 100%; 
+            padding: 18px; font-weight: 900; cursor: pointer; text-transform: uppercase;
+            letter-spacing: 2px; transition: 0.3s;
+        }
+        .panic-btn:active { filter: brightness(1.5); }
     </style>
 </head>
 <body>
-    <div class="panel">
-        <h1>SUC SOFTWARES</h1>
-        
-        <div class="section-title">🎯 Combat & Aim</div>
-        <div class="row"><span>Auto-Scan Aimbot</span><label class="switch"><input type="checkbox" onchange="send('aim', this.checked)"><span class="slider"></span></label></div>
-        <div class="row"><span>No Recoil Visual</span><label class="switch"><input type="checkbox" onchange="send('recoil', this.checked)"><span class="slider"></span></label></div>
-        
-        <div class="section-title">👁️ Visual ESP</div>
-        <div class="row"><span>Skeleton Line</span><label class="switch"><input type="checkbox" onchange="send('esp', this.checked)"><span class="slider"></span></label></div>
-        <div class="row"><span>Stream Mode</span><label class="switch"><input type="checkbox" onchange="send('stream', this.checked)"><span class="slider"></span></label></div>
 
-        <button class="btn-panic" onclick="send('panic', true)">FORCE BYPASS & DISCONNECT</button>
+    <div class="panel">
+        <div class="header">
+            <h1>SUC SOFTWARES</h1>
+        </div>
+
+        <!-- Menu de Navegação -->
+        <div class="tabs-menu">
+            <button class="tab-link active" onclick="switchTab(event, 'combat')">COMBAT</button>
+            <button class="tab-link" onclick="switchTab(event, 'visual')">VISUAL</button>
+            <button class="tab-link" onclick="switchTab(event, 'player')">PLAYER</button>
+            <button class="tab-link" onclick="switchTab(event, 'weapon')">WEAPON</button>
+            <button class="tab-link" onclick="switchTab(event, 'misc')">MISC</button>
+        </div>
+
+        <!-- Conteúdo COMBAT -->
+        <div id="combat" class="tab-content active">
+            <div class="function-row"><span>Humanized Aim</span><label class="switch"><input type="checkbox" onchange="send('aim', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>Smooth Tracking</span><label class="switch"><input type="checkbox" onchange="send('smooth_track', this.checked)"><span class="slider"></span></label></div>
+            <div class="slider-group">
+                <label>FOV Range <span id="fov_val">150</span></label>
+                <input type="range" min="0" max="500" value="150" oninput="sendRange('fov', this.value, 'fov_val')">
+            </div>
+            <div class="function-row"><span>No Recoil Visual</span><label class="switch"><input type="checkbox" onchange="send('recoil', this.checked)"><span class="slider"></span></label></div>
+        </div>
+
+        <!-- Conteúdo VISUAL -->
+        <div id="visual" class="tab-content">
+            <div class="function-row"><span>ESP Box</span><label class="switch"><input type="checkbox" onchange="send('esp_box', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>ESP Skeleton</span><label class="switch"><input type="checkbox" onchange="send('esp_skel', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>Glow Enemies</span><label class="switch"><input type="checkbox" onchange="send('glow', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>Stream Mode</span><label class="switch"><input type="checkbox" onchange="send('stream', this.checked)"><span class="slider"></span></label></div>
+        </div>
+
+        <!-- Conteúdo PLAYER -->
+        <div id="player" class="tab-content">
+            <div class="function-row"><span>Speed Boost</span><label class="switch"><input type="checkbox" onchange="send('speed', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>High Jump</span><label class="switch"><input type="checkbox" onchange="send('jump', this.checked)"><span class="slider"></span></label></div>
+            <div class="function-row"><span>Ghost Walk</span><label class="switch"><input type="checkbox" onchange="send('ghost', this.checked)"><span class="slider"></span></label></div>
+        </div>
+
+        <!-- Botão de Bypass Imediato -->
+        <button class="panic-btn" onclick="panic()">Force Bypass & Clean</button>
     </div>
 
     <script>
-        const FIREBASE_URL = "SUA_URL_DO_FIREBASE_AQUI"; // Coloque seu link aqui
+        const FIREBASE_URL = "SUA_URL_DO_FIREBASE_AQUI";
 
-        function send(func, val) {
-            const status = val ? 1 : 0;
-            fetch(`${FIREBASE_URL}/${func}.json`, {
-                method: 'PUT',
-                body: JSON.stringify(status)
-            });
+        // Alternar Abas
+        function switchTab(evt, tabId) {
+            let contents = document.getElementsByClassName("tab-content");
+            for (let c of contents) { c.style.display = "none"; c.classList.remove("active"); }
+            let links = document.getElementsByClassName("tab-link");
+            for (let l of links) { l.classList.remove("active"); }
+            document.getElementById(tabId).style.display = "block";
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Enviar Toggles (Liga/Desliga)
+        function send(feature, active) {
+            const status = active ? 1 : 0;
+            fetch(`${FIREBASE_URL}/${feature}.json`, { method: 'PUT', body: JSON.stringify(status) });
+        }
+
+        // Enviar Sliders (Valores numéricos)
+        function sendRange(feature, value, displayId) {
+            document.getElementById(displayId).innerText = value;
+            fetch(`${FIREBASE_URL}/${feature}.json`, { method: 'PUT', body: JSON.stringify(parseInt(value)) });
+        }
+
+        // Função Pânico (Bypass)
+        function panic() {
+            fetch(`${FIREBASE_URL}/panic.json`, { method: 'PUT', body: JSON.stringify(1) });
+            alert("BYPASS EXECUTADO NO PC!");
         }
     </script>
 </body>
