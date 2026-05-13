@@ -123,7 +123,8 @@
     </div>
 
     <script>
-        const FIREBASE_URL = "SUA_URL_DO_FIREBASE_AQUI";
+        // Link Oficial SUC SOFTWARES
+        const FIREBASE_URL = "https://suc-4ea3c-default-rtdb.firebaseio.com/";
 
         // Alternar Abas
         function switchTab(evt, tabId) {
@@ -139,18 +140,18 @@
         // Enviar Toggles (Liga/Desliga)
         function send(feature, active) {
             const status = active ? 1 : 0;
-            fetch(`${FIREBASE_URL}/${feature}.json`, { method: 'PUT', body: JSON.stringify(status) });
+            fetch(`${FIREBASE_URL}${feature}.json`, { method: 'PUT', body: JSON.stringify(status) });
         }
 
         // Enviar Sliders (Valores numéricos)
         function sendRange(feature, value, displayId) {
             document.getElementById(displayId).innerText = value;
-            fetch(`${FIREBASE_URL}/${feature}.json`, { method: 'PUT', body: JSON.stringify(parseInt(value)) });
+            fetch(`${FIREBASE_URL}${feature}.json`, { method: 'PUT', body: JSON.stringify(parseInt(value)) });
         }
 
         // Função Pânico (Bypass)
         function panic() {
-            fetch(`${FIREBASE_URL}/panic.json`, { method: 'PUT', body: JSON.stringify(1) });
+            fetch(`${FIREBASE_URL}panic.json`, { method: 'PUT', body: JSON.stringify(1) });
             alert("BYPASS EXECUTADO NO PC!");
         }
     </script>
